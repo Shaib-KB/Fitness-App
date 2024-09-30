@@ -1,7 +1,14 @@
 import React from "react";
+import "./App.css"; 
+import { Route, Routes } from "react-router-dom";
+import { Box } from "@mui/material";
 
 const App = () => {
-  return <div>Fitness</div>;
+  return (
+  <Box width="400px">
+  </Box>
+  )
 };
 
 export default App;
+
