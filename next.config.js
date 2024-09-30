@@ -1,5 +1,8 @@
-@type {import ('next').NextConfig}
-
-const nextConfig = {eslint: {ignoreDuringBuilds: true,},}
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  compiler: {
+    styledComponents: true,
+  },
+};
 
 export default nextConfig;
