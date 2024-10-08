@@ -5,7 +5,7 @@ import {fetchData, exerciseOptions} from '../utils/fetchData';
 
 
 const Exercises = ({exercises,setExercises,bodyPart}) => { 
-  console.log("data", exercises); TODO: FIX THE FETCH DATA
+  console.log("data", exercises); 
   
   return (
   <Box id="exercises"
