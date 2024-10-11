@@ -7,19 +7,25 @@ const SearchExercises = ({setExercises,bodyPart,setBodyPart}) => {
    const [search, setSearch] = useState('')
    const [bodyParts, setBodyParts] = useState([])
 
-   useEffect(()=> {
-    const fetchExercisesData= async ()=>{
-      const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
-      setBodyParts(['all',...bodyPartsData]);
-    }
-      fetchExercisesData(); //call the function immediately
-   },[])
-   
-    const handleSearch = async () => {
-      if (search) {
-        const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
-      
 
+   useEffect(() => {
+    const fetchExercisesData = async () => {
+      try {
+        const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
+        setBodyParts(['all', ...bodyPartsData]);
+      } catch (error) {
+        console.error("Error fetching body parts data:", error);
+      }
+    };
+
+    fetchExercisesData();
+  }, []);
+
+  // Handle search functionality
+  const handleSearch = async () => {
+    if (search) {
+      try {
+        const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
         const searchExercises = exercisesData.filter(
           (exercise) =>
             exercise.name.toLowerCase().includes(search) ||
@@ -29,8 +35,11 @@ const SearchExercises = ({setExercises,bodyPart,setBodyPart}) => {
         );
         setSearch('');
         setExercises(searchExercises);
+      } catch (error) {
+        console.error("Error fetching exercises data:", error);
       }
-    };
+    }
+  };
 
 
    return (
