@@ -6,6 +6,7 @@ import HorizontalScrollbar from './HorizontalScrollbar';
 const SearchExercises = ({setExercises,bodyPart,setBodyPart}) => {
    const [search, setSearch] = useState('')
    const [bodyParts, setBodyParts] = useState([])
+  
 
 
    useEffect(() => {
@@ -35,6 +36,11 @@ const SearchExercises = ({setExercises,bodyPart,setBodyPart}) => {
         );
         setSearch('');
         setExercises(searchExercises);
+        // Scroll down to the bottom of the page
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,  // scroll to the bottom
+        behavior: 'smooth',  // smooth scrolling effect
+      });
       } catch (error) {
         console.error("Error fetching exercises data:", error);
       }
