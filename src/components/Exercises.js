@@ -21,7 +21,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
     window.scrollTo({ top: 1800, behavior: "smooth" });
   };
 
-  // Fetch exercises when the bodyPart or component changes
+  // Fetch exercises when the bodyPart or component changes for the cards
   useEffect(() => {
     const fetchExercisesData = async () => {
       let exercisesData = [];
