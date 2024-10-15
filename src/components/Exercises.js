@@ -7,7 +7,7 @@ import ExerciseCard from "./ExerciseCard";
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
   console.log(exercises);
   const [currentPage, setCurrentPage] = useState(1);
-  const exercisesPerPage = 5;
+  const exercisesPerPage = 9;
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
   const currentExercises = exercises.slice(
@@ -45,13 +45,13 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   }, [bodyPart, setExercises]);
 
   return (
-    <Box id="exercises" sx={{ mt: { lg: "110px" } }} mt="50px" p="20px">
-      <Typography variant="h3" mb="46px">
+    <Box id="exercises" sx={{ mt: { lg: "0px" } }} mt="50px" p="20px">
+      <Typography variant="h5" mb="46px">
         Showing results
       </Typography>
       <Stack
         direction="row"
-        sx={{ gap: { lg: "110px", xs: "50px" } }}
+        sx={{ gap: { lg: "50px", xs: "30px" } }}
         flexWrap="wrap"
         justifyContent="center"
       >
