@@ -5,7 +5,7 @@ import { fetchData, exerciseOptions } from "../utils/fetchData";
 import ExerciseCard from "./ExerciseCard";
 
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
-  console.log(exercises);
+  console.log( "data", exercises);
   const [currentPage, setCurrentPage] = useState(1);
   const exercisesPerPage = 9;
   const indexOfLastExercise = currentPage * exercisesPerPage;
@@ -15,15 +15,16 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
     indexOfLastExercise
   );
 
-  // Function for the next page
+  // Function for the next page  
   const paginate = (e, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 1800, behavior: "smooth" });
   };
 
-  // Fetch exercises when the bodyPart or component changes for the cards
-  useEffect(() => {
-    const fetchExercisesData = async () => {
+ // Fetch exercises when the bodyPart or component changes for the cards
+useEffect(() => {
+  const fetchExercisesData = async () => {
+    try {
       let exercisesData = [];
 
       if (bodyPart === "all") {
@@ -39,10 +40,14 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
       }
 
       setExercises(exercisesData);
-    };
+    } catch (error) {
+      console.error("Error fetching exercises data:", error);
+    }
+  };
 
-    fetchExercisesData();
-  }, [bodyPart, setExercises]);
+  fetchExercisesData();
+}, [bodyPart, setExercises]);
+
 
   return (
     <Box id="exercises" sx={{ mt: { lg: "0px" } }} mt="50px" p="20px">
