@@ -11,7 +11,7 @@ const OpenAIApi = require("openai");
 
 
 const config = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(config);
