@@ -5,6 +5,9 @@ import { Box } from "@mui/material";
 import Detail from "../components/Detail";
 import ExerciseVideos from "../components/ExerciseVideos";
 import SimilarExercises from "../components/SimilarExercises";
+import AiFoodNutrition from "../components/AiFoodNutrition";
+import "../App.css";
+
 
 const ExerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState({});
@@ -44,29 +47,34 @@ const ExerciseDetail = () => {
           `${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`,
           exerciseOptions
         );
-        setEquipmentExercise(equipmentExercisesData)
-
-
+        setEquipmentExercise(equipmentExercisesData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
-
-    
-
 
     fetchExercisesData();
   }, [id]);
 
   return (
     <Box>
+      {/* Display Exercise Details */}
       <Detail exerciseDetail={exerciseDetail} />
+      
+      {/* Display Exercise Videos */}
       <ExerciseVideos
         exerciseVideos={exerciseVideos}
         name={exerciseDetail.name}
       />
-      <SimilarExercises targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises} />
+      
+      {/* Display Similar Exercises */}
+      <SimilarExercises 
+        targetMuscleExercises={targetMuscleExercises} 
+        equipmentExercises={equipmentExercises} 
+      />
+
+      {/* AI Nutrition Recommendation Form */}
+      <AiFoodNutrition  prompt={prompt} />
     </Box>
   );
 };
